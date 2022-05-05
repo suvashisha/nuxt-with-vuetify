@@ -1,5 +1,6 @@
 <template>
 <div style="width: 684px;">
+  <div>{{ picker3 }}</div>
    <v-sheet>
     <v-slide-group multiple show-arrows>
       <v-slide-item v-for="n in 6" :key="n">
@@ -8,8 +9,8 @@
           <v-date-picker
               v-model="$data['picker' + n]"
               :first-day-of-week="1"
-              color="green lighten-1"
               header-color="theme--dark"
+              color="green lighten-1"
               locale="ja-jp"
               :day-format="(date) => new Date(date).getDate()"
               :title-date-format="getTitleMonthFormat"
