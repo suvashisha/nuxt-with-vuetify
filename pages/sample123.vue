@@ -11,7 +11,7 @@
               header-color="theme--dark"
               locale="ja-jp"
               :day-format="(date) => new Date(date).getDate()"
-              :title-date-format="getTitleDateFormat"
+              :title-date-format="getTitleMonthFormat"
             ></v-date-picker>
           <v-card-text class="text--primary">
            {{ n }}
@@ -27,19 +27,19 @@ export default {
   name: "sample123",
   data() {
     return {
-      // picker1: new Date(Date.now() - new Date().getTimezoneOffset() * 60000)
-      //   .toISOString()
-      //   .substr(0, 10),
-      //   picker2: '2022-06-01',
-
-        picker1: new Date().toISOString().substr(0, 10),
-        picker2: '2022-06-29'
+        picker1: new Date(new Date().setMonth(new Date().getMonth() - 2)).toISOString().substr(0, 10),
+        picker2: new Date(new Date().setMonth(new Date().getMonth() - 1)).toISOString().substr(0, 10),
+        picker3: new Date().toISOString().substr(0, 10),
+        picker4: new Date(new Date().setMonth(new Date().getMonth() + 1)).toISOString().substr(0, 10),
+        picker5: new Date(new Date().setMonth(new Date().getMonth() + 2)).toISOString().substr(0, 10),
+        picker6: new Date(new Date().setMonth(new Date().getMonth() + 3)).toISOString().substr(0, 10),
     };
   },
   methods: {
-    getTitleDateFormat(isoDate) {
-      console.log("getTitleDateFormat: " + isoDate);
-      return new Date().toISOString().substr(5, 2);
+    getTitleMonthFormat(str) {
+      if(str === '') return str
+      let m = str.substr(5, 2)
+      return m;
     },
   },
 
