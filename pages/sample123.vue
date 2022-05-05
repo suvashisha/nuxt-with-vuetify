@@ -1,5 +1,6 @@
 <template>
-  <v-sheet>
+<div style="width: 684px;">
+   <v-sheet>
     <v-slide-group multiple show-arrows>
       <v-slide-item v-for="n in 6" :key="n">
         <!-- <v-card style="margin: 0 0 0 0; width: 320px; height: 240px;"> -->
@@ -13,13 +14,11 @@
               :day-format="(date) => new Date(date).getDate()"
               :title-date-format="getTitleMonthFormat"
             ></v-date-picker>
-          <v-card-text class="text--primary">
-           {{ n }}
-          </v-card-text>
         </v-card>
       </v-slide-item>
     </v-slide-group>
   </v-sheet>
+</div>
 </template>
 
 <script>
@@ -47,6 +46,13 @@ export default {
 </script>
 
 <style scoped>
+>>> div.main_container {
+  width: 684px !important;
+}
+
+>>> .v-btn::before {
+  background-color: transparent;
+}
 >>> .v-window__next,
 >>> .v-window__prev {
   top: 0%;
