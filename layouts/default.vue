@@ -104,6 +104,11 @@ export default {
         },
         {
           icon: 'mdi-apps',
+          title: 'CalendarTest',
+          to: '/calendarTest'
+        },
+        {
+          icon: 'mdi-apps',
           title: 'sample',
           to: '/sample'
         },
@@ -111,6 +116,16 @@ export default {
           icon: 'mdi-apps',
           title: 'sample2',
           to: '/sample2'
+        },
+        {
+          icon: 'mdi-apps',
+          title: 'sample3',
+          to: '/sample3'
+        },
+        {
+          icon: 'mdi-apps',
+          title: 'sample123',
+          to: '/sample123'
         },
         {
           icon: 'mdi-apps',
@@ -181,6 +196,11 @@ export default {
           icon: 'mdi-chart-bubble',
           title: 'CardEvent',
           to: '/cardEvent'
+        },
+        {
+          icon: 'mdi-chart-bubble',
+          title: 'sample1234',
+          to: '/sample1234'
         },
       ],
       miniVariant: false,
