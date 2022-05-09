@@ -1,13 +1,14 @@
 <template>
-  <div>
-    <div>
-      {{ this.$moment(today,'YYYY-MM-DD').format("YYYY /MM /DD") }}</div>
-    <v-sheet black>
-      <v-slide-group multiple show-arrows>
-        <v-slide-item v-for="n in 6" :key="n">
-          <v-card class="fix_cal_wh">
+ <div class="container--fluid days-header">
+            <v-sheet black class="mx-auto" width="839px">
+                <v-slide-group multiple center-active show-arrows v-model="activeDay">
+                    <template v-slot:prev>
+                        <v-btn text @click="prev()"><v-icon>mdi-chevron-left</v-icon></v-btn>
+                    </template>
+                    <v-slide-item v-for="d in items" :key="d.id" v-slot:default="{ active, toggle }">
+<v-card class="fix_cal_wh">
             <v-date-picker
-              v-model="$data['picker' + n]"
+            v-model="picker"
               :first-day-of-week="0"
               header-color="theme--dark"
               color="cyan accent-2"
@@ -18,43 +19,51 @@
               width="439px"
             ></v-date-picker>
           </v-card>
-        </v-slide-item>
-      </v-slide-group>
-    </v-sheet>
-      <div>
-    <v-divider></v-divider>
-  </div>
-  </div>
+                    </v-slide-item>
+                    <template v-slot:next>
+                       <v-btn text @click="next()"><v-icon>mdi-chevron-right</v-icon></v-btn>
+                    </template>
+                </v-slide-group>
+                <v-tabs show-arrows="true" v-model="activeDay" height="5">
+                    <v-tab-item v-for="item in items" :key="item.id">{{item.name}}</v-tab-item>
+                </v-tabs>
+            </v-sheet>
+             </div>
 </template>
 
 <script>
 export default {
-  name: "sample123",
+  name: "cardTest",
   data() {
-    return {
-      today: new Date().toISOString().substr(0, 10),
-      picker1: new Date(new Date().setMonth(new Date().getMonth() - 2))
+        return {
+            items: [
+                {name: new Date(new Date().setMonth(new Date().getMonth() - 2))
         .toISOString()
-        .substr(0, 7),
-      picker2: new Date(new Date().setMonth(new Date().getMonth() - 1))
+        .substr(0, 7), id: 1},
+                {name: new Date(new Date().setMonth(new Date().getMonth() - 1))
         .toISOString()
-        .substr(0, 7),
-      picker3: new Date().toISOString().substr(0, 10),
-      picker4: new Date(new Date().setMonth(new Date().getMonth() + 1))
-        .toISOString()
-        .substr(0, 7),
-      picker5: new Date(new Date().setMonth(new Date().getMonth() + 2))
-        .toISOString()
-        .substr(0, 7),
-      picker6: new Date(new Date().setMonth(new Date().getMonth() + 3))
-        .toISOString()
-        .substr(0, 7),
-    };
-  },
-  methods: {
-    getTitleMonthFormat(str) {
+        .substr(0, 7), id: 2},
+                {picker: 'Wednesday', id: 3},
+                {name: 'Thursday', id: 4},
+                {name: 'Friday', id: 5}
+            ],
+            activeDay: 2,
+        }
+    },
+    methods: {
+        prev() {
+            if (this.activeDay === 0) return
+            this.activeDay = this.activeDay - 1
+        },
+        next() {
+            this.activeDay = this.activeDay + 1
+        },
+        setActive(id) {
+            this.activeDay = this.items.findIndex(d => d.id===id)
+        },
+        getTitleMonthFormat(str) {
       if (str === "") return str;
-      let m = parseInt(str.substr(5, 2));
+      let m = str.substr(5, 2);
       return m;
     },
     formatDate(date) {
@@ -63,7 +72,8 @@ export default {
       this.text = `${year}${month}${day}`;
       return;
     },
-  },
+      }
+
 };
 </script>
 
@@ -172,3 +182,5 @@ export default {
   background-color: black;
 }
 </style>
+
+
