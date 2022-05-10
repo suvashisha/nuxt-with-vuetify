@@ -1,10 +1,20 @@
 <template>
   <div>
+    <div class="d-flex justify-center">
+      <v-hover v-slot="{ hover }">
+        <v-card class="ma-4 pa-4" width="300">
+          <p class="mb-4">Sign up to get started</p>
+          <v-expand-transition>
+            <div v-if="hover"><v-btn color="primary" dark>Sign up</v-btn></div>
+          </v-expand-transition>
+        </v-card>
+      </v-hover>
+    </div>
     <div>
       {{ this.$moment(today,'YYYY-MM-DD').format("YYYY /MM /DD") }}</div>
     <v-sheet black>
       <v-slide-group multiple show-arrows>
-        <v-slide-item v-for="n in 6" :key="n">
+        <v-slide-item v-for="n in 11" :key="n">
           <v-card class="fix_cal_wh">
             <v-date-picker
               v-model="$data['picker' + n]"
@@ -49,12 +59,27 @@ export default {
       picker6: new Date(new Date().setMonth(new Date().getMonth() + 3))
         .toISOString()
         .substr(0, 7),
+        picker7: new Date(new Date().setMonth(new Date().getMonth() + 4))
+        .toISOString()
+        .substr(0, 7),
+        picker8: new Date(new Date().setMonth(new Date().getMonth() + 5))
+        .toISOString()
+        .substr(0, 7),
+        picker9: new Date(new Date().setMonth(new Date().getMonth() + 6))
+        .toISOString()
+        .substr(0, 7),
+        picker10: new Date(new Date().setMonth(new Date().getMonth() + 7))
+        .toISOString()
+        .substr(0, 7),
+        picker11: new Date(new Date().setMonth(new Date().getMonth() + 8))
+        .toISOString()
+        .substr(0, 7),
     };
   },
   methods: {
-    getTitleMonthFormat(str) {
-      if (str === "") return str;
-      let m = parseInt(str.substr(5, 2));
+    getTitleMonthFormat(date) {
+      if (date === "") return date;
+      let m = date.substr(5, 2).replace(/^0+/, '');
       return m;
     },
     formatDate(date) {
