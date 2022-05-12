@@ -1,2 +1,13 @@
 https://www.codeply.com/p/MR3Sajw9kt
 https://codepen.io/wernerm/pen/eLwrxY
+
+
+https://www.programiz.com/javascript/multidimensional-array
+
+let studentsData = [['Jack', 24], ['Sara', 23],];
+
+for (let i of studentsData) {
+  for (let j of i) {
+    console.log(j);
+  }
+}
