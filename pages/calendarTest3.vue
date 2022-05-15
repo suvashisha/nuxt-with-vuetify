@@ -135,10 +135,12 @@ export default {
       return document.getElementById('slide').scrollLeft = 489 * 12;
     },
     slidePrev() {
+      document.getElementById('slide').classList.add("smooth");
       document.getElementById('slide').scrollLeft -= 489 * 2;
     },
     slideNext() {
-    document.getElementById('slide').scrollLeft += 489 * 2;
+      document.getElementById('slide').classList.add("smooth");
+      document.getElementById('slide').scrollLeft += 489 * 2;
     },
     sideScroll(element,direction,speed,distance,step) {
     var scrollAmount = 0;
@@ -188,9 +190,11 @@ background-color: aqua;
     width: 100%;
     display: flex;
     overflow-x: scroll;
-    scroll-behavior: smooth;
+    /* scroll-behavior: smooth; */
 }
-
+.smooth {
+  scroll-behavior: smooth;
+}
 /* .panel {
   border: solid 1px #6c757d;
   padding: 10px;
