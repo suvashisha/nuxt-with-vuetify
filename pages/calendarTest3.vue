@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="d-flex justify-center">
+    <div class="date-panel-main d-flex justify-center">
         <v-card @click="goToCurrentMonth()" class="date-panel ma-4 pa-4 justify-center" width="200">
           <span class='today-text'>Today</span>
           <span class='today-date'>{{ this.$moment(today,'YYYY-MM-DD').format("YYYY /MM /DD") }} </span>
@@ -181,6 +181,12 @@ export default {
 }
 .date-panel:hover {
 background-color: aqua;
+}
+.date-panel::before {
+background-color: #000000;
+}
+.date-panel-main {
+background-color: #000000;
 }
 .date-panel {
   border-radius: 50px;
