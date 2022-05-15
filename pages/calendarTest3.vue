@@ -41,9 +41,6 @@
 <script>
 export default {
   name: "Calendar",
-    beforeMount() {
-      this.goToCurrentMonth()
-    },
   data() {
     return {
       today: new Date().toISOString().substr(0, 10),
@@ -158,6 +155,9 @@ export default {
     }, speed);
 }
   },
+      mounted() {
+      this.goToCurrentMonth()
+    },
 };
 </script>
 
