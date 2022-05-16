@@ -22,6 +22,7 @@
                 locale="ja-jp"
                 :day-format="(date) => new Date(date).getDate()"
                 :title-date-format="getTitleMonthFormat"
+                :year-format="getTitleYearFormat"
                 height="438px"
                 width="439px"
                 readonly
@@ -30,7 +31,7 @@
           </div>
         </div>
       </div>
-      <div text @click="slideNext()"><v-icon>mdi-chevron-right</v-icon></div>
+      <div class='slide-next' @click="slideNext()"><v-icon>mdi-chevron-right</v-icon></div>
     </v-sheet>
       <div>
     <v-divider></v-divider>
@@ -125,6 +126,11 @@ export default {
       let m = date.substr(5, 2).replace(/^0+/, '');
       return m;
     },
+    getTitleYearFormat(date) {
+      if (date === "") return date;
+      let m = parseInt(date.substr(0, 4));
+      return m;
+    },
     formatDate(date) {
       if (!date) return null;
       const [year, month, day] = date.split("-");
@@ -132,7 +138,7 @@ export default {
       return;
     },
     goToCurrentMonth() {
-      return document.getElementById('slide').scrollLeft = 489 * 12;
+      document.getElementById('slide').scrollLeft = 489 * 12;
     },
     slidePrev() {
       document.getElementById('slide').classList.add("smooth");
@@ -167,6 +173,7 @@ export default {
 /* >>> div.main_container {
   width: 684px !important;
 } */
+.slide-next,
 .slide-prev {
   align-items: center;
     display: flex;
@@ -178,6 +185,7 @@ export default {
     border-radius: 50%;
     background-color: #3d3d3d;
     cursor: pointer;
+    position: absolute;
 }
 .date-panel:hover {
 background-color: aqua;
@@ -262,16 +270,21 @@ background-color: #000000;
 >>> .v-date-picker-title::before,
 >>> .v-picker__body::before {
   height: 438px;
-  width: 70px;
+  width: 52px;
   content: " ";
   position: absolute;
   top: 0;
   left: 0;
   background-color: #1E1E1E;
+  margin-left: 12px;
 }
 >>> .v-picker__title,
 >>> .v-picker__body {
   background-color: black;
+}
+>>> .v-date-picker-table,
+>>> .v-picker__title {
+  padding-right: 60px;
 }
 >>> .v-picker__body {
   border-radius: 0px !important;
@@ -281,7 +294,7 @@ background-color: #000000;
   height: 438px;
 }
 .v-picker {
-  font-size: 2.2em;
+  font-size: 2.0em;
 }
 .v-divider {
     border-color: #FFFFFF !important;
@@ -289,13 +302,13 @@ background-color: #000000;
 }
 >>> .v-date-picker-table th,
 >>> .v-date-picker-table .v-btn {
-  font-size: 15px !important;
+  font-size: 17px !important;
 }
 >>> .v-date-picker-title__year {
   font-size: 16px !important;
 }
 >>> .v-date-picker-title__date {
-  font-size: 18px !important;
+  font-size: 26px !important;
 }
 >>> .v-slide-group__next,
 >>> .v-slide-group__prev {
