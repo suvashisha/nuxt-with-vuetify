@@ -138,15 +138,15 @@ export default {
       return;
     },
     goToCurrentMonth() {
-      document.getElementById('slide').scrollLeft = 489 * 12;
+      document.getElementById('slide').scrollLeft = 439 * 12;
     },
     slidePrev() {
       document.getElementById('slide').classList.add("smooth");
-      document.getElementById('slide').scrollLeft -= 489 * 2;
+      document.getElementById('slide').scrollLeft -= 439;
     },
     slideNext() {
       document.getElementById('slide').classList.add("smooth");
-      document.getElementById('slide').scrollLeft += 489 * 2;
+      document.getElementById('slide').scrollLeft += 439
     },
     sideScroll(element,direction,speed,distance,step) {
     var scrollAmount = 0;
@@ -185,7 +185,6 @@ export default {
     border-radius: 50%;
     background-color: #3d3d3d;
     cursor: pointer;
-    position: absolute;
 }
 .date-panel:hover {
 background-color: aqua;
