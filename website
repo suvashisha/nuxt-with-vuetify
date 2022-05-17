@@ -11,3 +11,6 @@ for (let i of studentsData) {
     console.log(j);
   }
 }
+
+
+設定されているアイコンの画像が現在の画像と異なる為お客様より最新の画像を入手が必要
