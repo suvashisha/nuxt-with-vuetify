@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="date-panel-main d-flex justify-center">
-        <v-card @click="goToCurrentMonth()" class="date-panel ma-4 pa-4 justify-center" width="200">
+        <v-card v-on:click="goToCurrentMonth()" class="date-panel ma-4 pa-4 justify-center" width="200">
           <span class='today-text'>Today</span>
           <span class='today-date'>{{ this.$moment(today,'YYYY-MM-DD').format("YYYY /MM /DD") }} </span>
         </v-card>
@@ -44,6 +44,7 @@ export default {
   name: "Calendar",
   data() {
     return {
+      processing: false,
       today: new Date().toISOString().substr(0, 10),
       picker1: new Date(new Date().setMonth(new Date().getMonth() - 12))
         .toISOString()
@@ -141,8 +142,19 @@ export default {
       document.getElementById('slide').scrollLeft = 439 * 12;
     },
     slidePrev() {
-      document.getElementById('slide').classList.add("smooth");
+      if (this.processing === true) {
+        return;
+      }
+        this.processing = true
+      // simulating the async request
+      setTimeout(() => {
+             document.getElementById('slide').classList.add("smooth");
       document.getElementById('slide').scrollLeft -= 439;
+
+        // on success or failure
+        // reset the state
+        this.processing = false;
+      }, 300);
     },
     slideNext() {
       document.getElementById('slide').classList.add("smooth");
