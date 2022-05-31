@@ -19,26 +19,27 @@ export default {
   methods: {
     createMetaball() {
       let canvas = document.querySelector("#canvas");
-      let context = canvas.getContext("2d");
+      let context = canvas.getContext('2d');
+
+      // context.beginPath();
+      // context.arc(50, 60, 40, 0, Math.PI * 2, true);
+      // context.strokeStyle = "deepskyblue";
+      // context.lineWidth = 5;
+      // context.stroke();
+
+      // context.beginPath();
+      // context.arc(170, 80, 40, 0, Math.PI * 2, true);
+      // context.fillStyle = "lightskyblue";
+      // context.fill();
 
       context.beginPath();
-      context.arc(50, 60, 40, 0, Math.PI * 2, true);
-      context.strokeStyle = "deepskyblue";
-      context.lineWidth = 5;
-      context.stroke();
-
-      context.beginPath();
-      context.arc(140, 60, 40, 0, Math.PI * 2, true);
-      context.fillStyle = "lightskyblue";
+      context.filter = 'blur(10px)';
+      context.ellipse(100, 50, 50, 25, 0, 0, Math.PI * 2);
+      context.fillStyle = "rgba(255, 0, 0, 0.5)";
       context.fill();
-
-      context.beginPath();
-      context.arc(230, 60, 40, 0, Math.PI * 2, true);
-      context.fillStyle = "lightskyblue";
-      context.fill();
-      context.strokeStyle = "deepskyblue";
-      context.lineWidth = 5;
-      context.stroke();
+      // context.strokeStyle = "deepskyblue";
+      // context.lineWidth = 5;
+      // context.stroke();
     },
   },
   mounted() {
@@ -142,7 +143,7 @@ export default {
   left: 20px; */
   margin: 20px;
   border-radius: 20px;
-  background-color: #8000ff;
+  background-color: #ffffff;
 }
 .not-blured-circle {
   position: absolute;
