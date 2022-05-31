@@ -12,4 +12,7 @@ for (let i of studentsData) {
   }
 }
 
+
+設定されているアイコンの画像が現在の画像と異なる為お客様より最新の画像を入手が必要
+
 https://www.codeproject.com/Tips/881675/How-to-Implement-Binarization-using-HTML-and-JavaS
