@@ -11,3 +11,5 @@ for (let i of studentsData) {
     console.log(j);
   }
 }
+
+https://www.codeproject.com/Tips/881675/How-to-Implement-Binarization-using-HTML-and-JavaS

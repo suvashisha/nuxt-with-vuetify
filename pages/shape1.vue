@@ -31,6 +31,8 @@ export default {
       // context.arc(170, 80, 40, 0, Math.PI * 2, true);
       // context.fillStyle = "lightskyblue";
       // context.fill();
+const THRESHOLD = 10;
+
 
       context.beginPath();
       context.filter = 'blur(10px)';
@@ -40,6 +42,71 @@ export default {
       // context.strokeStyle = "deepskyblue";
       // context.lineWidth = 5;
       // context.stroke();
+
+var src = context.getImageData(0, 0, canvas.width, canvas.height);
+      var dst = context.createImageData(canvas.width, canvas.height);
+//       // debugger;
+//       for (var i = 0; i < src.data.length; i=i+4) {
+//         console.log(src.data[i]);
+//             var y = ~~(255 * src.data[i] + 0 * src.data[i + 1] + 0 * src.data[i + 2]);
+//             var ret = (y > THRESHOLD) ? 255 : 0;
+//             dst.data[i] = dst.data[i+1] = dst.data[i+2] = ret;
+//             dst.data[i+3] = src.data[i+3];
+//         }
+// console.log(dst);
+//         context.putImageData(dst, 20, 50);
+
+      context.filter = 'none';
+ let width = canvas.width;
+   let height = canvas.height;
+   let imageData = context.getImageData(0, 0, width, height);
+// The width index is output position.
+    let w2 = width / 2;
+
+    // Run through the image.
+  // The height of the image.
+    for (let y = 0; y < height; y++) {
+	  // *4 for 4 ints per pixel.
+	  // This is an input index.
+        let inpos = y * width * 4;
+	  // This is an output index.
+        let outpos = inpos + w2 * 4
+	  // The width of the image.
+        for (let x = 0; x < w2; x++) {
+		// Get the pixel of the red channel.
+            let r = imageData.data[inpos++]
+		// Get the pixel of the green channel.
+            let g = imageData.data[inpos++]
+		// Get the pixel of the blue channel.
+            let b = imageData.data[inpos++]
+		// Get the pixel of the alpha channel.
+            let a = imageData.data[inpos++]
+            // Transform RGB color space to gray scale.
+			//let gray =  (0.299 * r + 0.587 * g + 0.114 * b)
+      let gray =  (0.299 * r + 0.587 * g + 0.114 * b)
+            // This is our threshold. You can change it.
+            if ( gray > 120 )
+			{
+			// Set the pixel is white.
+	            imageData.data[outpos++] = 255;
+    	            imageData.data[outpos++] = 255;
+        	      imageData.data[outpos++] = 255;
+            	imageData.data[outpos++] = a;
+			}
+			else
+			{
+			// Set the pixel is black.
+            	imageData.data[outpos++] = 255;
+            	imageData.data[outpos++] = 0;
+	            imageData.data[outpos++] = 0;
+    	        imageData.data[outpos++] = a;
+			}
+        } // The closing "The width of the image".
+    } // The closing "The height of the image".
+
+    // Put pixel data on canvas.
+    imageData.data.filter = 'none';
+    context.putImageData(imageData, 0, 0);
     },
   },
   mounted() {
