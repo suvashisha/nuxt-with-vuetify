@@ -61,9 +61,12 @@ export default {
 
       let outputCanvas = document.querySelector("#canvas4");
       let outputCtx = outputCanvas.getContext("2d");
-      outputCtx.drawImage(img1, 0, 0);
-      outputCtx.drawImage(img2, 0, 0);
-      outputCtx.drawImage(img3, 0, 0);
+      img1.onload=function(){
+      outputCtx.drawImage(img1, 0, 0);}
+      img2.onload=function(){
+      outputCtx.drawImage(img2, 0, 0);}
+      img3.onload=function(){
+      outputCtx.drawImage(img3, 0, 0);}
 
     },
     convert(layer, ctx, canvas) {
