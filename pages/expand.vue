@@ -1,16 +1,17 @@
 <template>
+<div class="full-screen">
+  <div class="text">gjkjj</div>
   <div id="wrapper">
     <div id="image-list">
       <v-row>
       <v-col
-        v-for="n in 9"
-        :key="n"
+        v-for="card in cards"
+        :key="card.id"
         class="d-flex child-flex"
         cols="4"
       >
         <v-img
-          :src="`https://picsum.photos/500/300?image=${n * 5 + 10}`"
-          :lazy-src="`https://picsum.photos/10/6?image=${n * 5 + 10}`"
+          :src="card.src"
           aspect-ratio="1"
           class="grey lighten-2"
           height="100"
@@ -33,10 +34,26 @@
     </v-row>
     </div>
   </div>
+  </div>
 </template>
 
 <script>
 export default {
+  data() {
+    return {
+      cards: [
+        { src: 'https://picsum.photos/500/300?image=15' },
+        { src: 'https://picsum.photos/500/300?image=20' },
+        { src: 'https://picsum.photos/500/300?image=25' },
+        { src: 'https://picsum.photos/500/300?image=30' },
+        { src: 'https://picsum.photos/500/300?image=35' },
+        { src: 'https://picsum.photos/500/300?image=40' },
+        { src: 'https://picsum.photos/500/300?image=45' },
+        { src: 'https://picsum.photos/500/300?image=50' },
+        { src: 'https://picsum.photos/500/300?image=55' },
+      ],
+    };
+  },
   mounted() {
     this.click();
   },
@@ -54,6 +71,20 @@ export default {
 </script>
 
 <style scoped>
+.full-screen {
+  display: block;
+  position: fixed;
+  width: 50%;
+  height: 800px;
+  left: 300px;
+  background-color: lightblue !important;
+}
+.text {
+  display: block;
+  position: absolute;
+  top: 400px;
+  left: 400px;
+}
 #wrapper {
   position: fixed;
   background: gray;
@@ -67,7 +98,7 @@ export default {
 }
 
 #wrapper.expanded {
-  top: 250px;
+  top: 310px;
 }
 
 #title {
@@ -84,6 +115,6 @@ export default {
 }
 
 .entry {
-  padding: 15px;
+  padding: 5px;
 }
 </style>
