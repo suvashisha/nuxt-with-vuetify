@@ -14,28 +14,14 @@
             <v-col
               v-for="card in cards"
               :key="card.id"
-              class="d-flex child-flex"
-              cols="4"
+              class="d-flex child-flex mx-5"
+              cols="3"
             >
               <v-img
                 :src="card.src"
-                aspect-ratio="1"
-                class="grey lighten-2"
                 height="100"
-                width="100"
+                width="200"
               >
-                <template v-slot:placeholder>
-                  <v-row
-                    class="fill-height ma-0"
-                    align="center"
-                    justify="center"
-                  >
-                    <v-progress-circular
-                      indeterminate
-                      color="grey lighten-5"
-                    ></v-progress-circular>
-                  </v-row>
-                </template>
               </v-img>
             </v-col>
           </v-row>
@@ -99,27 +85,28 @@ export default {
 .main-panel {
   display: block;
   position: absolute;
-  top: 500px;
+  top: 150px;
   left: 30px;
   width: 550px;
-  height: 200px;
+  height: 400px;
   background-color: black;
 }
 #wrapper {
-  position: fixed;
+  /* position: fixed; */
+  position: absolute;
   display: inline-block;
   background: gray;
   color: #fff;
   /* top: calc(100% - 80px); */
-  top: 600px;
-  left: 300px;
+  top: 350px;
+  left: 20px;
   right: 0;
   width: 500px;
   transition: top 250ms ease-in-out;
 }
 
 #wrapper.expanded {
-  top: 270px;
+  top: 10px;
 }
 
 #title {
