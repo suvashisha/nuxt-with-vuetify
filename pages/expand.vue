@@ -1,39 +1,47 @@
 <template>
-<div class="full-screen">
-  <div class="text">gjkjj</div>
-  <div id="wrapper">
-    <div id="image-list">
-      <v-row>
-      <v-col
-        v-for="card in cards"
-        :key="card.id"
-        class="d-flex child-flex"
-        cols="4"
-      >
-        <v-img
-          :src="card.src"
-          aspect-ratio="1"
-          class="grey lighten-2"
-          height="100"
-          width="100"
-        >
-          <template v-slot:placeholder>
-            <v-row
-              class="fill-height ma-0"
-              align="center"
-              justify="center"
+  <div class="full-screen">
+    <div class="text">gjkjj</div>
+    <div class="main-panel">
+      <div id="wrapper">
+        <div id="title-area">
+          RECOMMENDATION
+          <v-icon id="arrow" class="rotate" @click="clickToExpand" large>
+            mdi-chevron-up
+          </v-icon>
+        </div>
+        <div id="image-list">
+          <v-row>
+            <v-col
+              v-for="card in cards"
+              :key="card.id"
+              class="d-flex child-flex"
+              cols="4"
             >
-              <v-progress-circular
-                indeterminate
-                color="grey lighten-5"
-              ></v-progress-circular>
-            </v-row>
-          </template>
-        </v-img>
-      </v-col>
-    </v-row>
+              <v-img
+                :src="card.src"
+                aspect-ratio="1"
+                class="grey lighten-2"
+                height="100"
+                width="100"
+              >
+                <template v-slot:placeholder>
+                  <v-row
+                    class="fill-height ma-0"
+                    align="center"
+                    justify="center"
+                  >
+                    <v-progress-circular
+                      indeterminate
+                      color="grey lighten-5"
+                    ></v-progress-circular>
+                  </v-row>
+                </template>
+              </v-img>
+            </v-col>
+          </v-row>
+        </div>
+      </div>
     </div>
-  </div>
   </div>
 </template>
 
@@ -42,29 +50,32 @@ export default {
   data() {
     return {
       cards: [
-        { src: 'https://picsum.photos/500/300?image=15' },
-        { src: 'https://picsum.photos/500/300?image=20' },
-        { src: 'https://picsum.photos/500/300?image=25' },
-        { src: 'https://picsum.photos/500/300?image=30' },
-        { src: 'https://picsum.photos/500/300?image=35' },
-        { src: 'https://picsum.photos/500/300?image=40' },
-        { src: 'https://picsum.photos/500/300?image=45' },
-        { src: 'https://picsum.photos/500/300?image=50' },
-        { src: 'https://picsum.photos/500/300?image=55' },
+        { src: "https://picsum.photos/500/300?image=15" },
+        { src: "https://picsum.photos/500/300?image=20" },
+        { src: "https://picsum.photos/500/300?image=25" },
+        { src: "https://picsum.photos/500/300?image=30" },
+        { src: "https://picsum.photos/500/300?image=35" },
+        { src: "https://picsum.photos/500/300?image=40" },
+        { src: "https://picsum.photos/500/300?image=45" },
+        { src: "https://picsum.photos/500/300?image=50" },
+        { src: "https://picsum.photos/500/300?image=55" },
       ],
     };
   },
-  mounted() {
-    this.click();
-  },
+  // mounted() {
+  //   this.clickToExpand();
+  // },
   methods: {
-    click() {
+    clickToExpand() {
       const title = document.getElementById("title");
       const wrapper = document.getElementById("wrapper");
 
-      wrapper.addEventListener("click", () => {
-        wrapper.classList.toggle("expanded");
-      });
+      // title.addEventListener("click", () => {
+      //   wrapper.classList.toggle("expanded");
+      // });
+      wrapper.classList.toggle("expanded");
+      //document.getElementById("arrow").toggle("down");
+      document.getElementById("arrow").classList.toggle("down");
     },
   },
 };
@@ -85,25 +96,34 @@ export default {
   top: 400px;
   left: 400px;
 }
+.main-panel {
+  display: block;
+  position: absolute;
+  top: 500px;
+  left: 30px;
+  width: 550px;
+  height: 200px;
+  background-color: black;
+}
 #wrapper {
   position: fixed;
+  display: inline-block;
   background: gray;
   color: #fff;
-  top: calc(100% - 80px);
+  /* top: calc(100% - 80px); */
+  top: 600px;
   left: 300px;
   right: 0;
-  border-radius: 12px 12px 0 0;
-  width: 50%;
+  width: 500px;
   transition: top 250ms ease-in-out;
 }
 
 #wrapper.expanded {
-  top: 310px;
+  top: 270px;
 }
 
 #title {
-  text-align: center;
-  padding: 15px;
+  text-align: left;
   border-bottom: 1px solid white;
 }
 
@@ -116,5 +136,16 @@ export default {
 
 .entry {
   padding: 5px;
+}
+
+/* .rotate {
+    -moz-transition: all .5s linear;
+    -webkit-transition: all .5s linear;
+    transition: all .5s linear;
+} */
+.rotate.down {
+  -moz-transform: rotate(180deg);
+  -webkit-transform: rotate(180deg);
+  transform: rotate(180deg);
 }
 </style>
