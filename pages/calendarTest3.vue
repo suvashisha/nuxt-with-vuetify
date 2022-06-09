@@ -1,18 +1,26 @@
 <template>
-  <div>
+  <div class="full-screen">
     <div class="date-panel-main d-flex justify-center">
-        <v-card v-on:click="goToCurrentMonth()" class="date-panel ma-4 pa-4 justify-center" width="200">
-          <span class='today-text'>Today</span>
-          <span class='today-date'>{{ this.$moment(today,'YYYY-MM-DD').format("YYYY /MM /DD") }} </span>
-        </v-card>
+      <v-card
+        v-on:click="goToCurrentMonth()"
+        class="date-panel ma-4 pa-4 justify-center"
+        width="200"
+      >
+        <span class="today-text">Today</span>
+        <span class="today-date"
+          >{{ this.$moment(today, "YYYY-MM-DD").format("YYYY /MM /DD") }}
+        </span>
+      </v-card>
     </div>
     <v-sheet black>
       <div>
-          <div class='slide-prev' @click="slidePrev()"><v-icon large>mdi-chevron-left</v-icon></div>
+        <div class="slide-prev" @click="slidePrev()">
+          <v-icon large>mdi-chevron-left</v-icon>
+        </div>
       </div>
-      <div class='cal-container'>
-        <div id="slide" class='slide-container'>
-          <div class='panel' v-for="n in 25" :key="n">
+      <div class="cal-container">
+        <div id="slide" class="slide-container">
+          <div class="panel" v-for="n in 25" :key="n">
             <v-card class="fix_cal_wh">
               <v-date-picker
                 v-model="$data['picker' + n]"
@@ -31,11 +39,28 @@
           </div>
         </div>
       </div>
-      <div class='slide-next' @click="slideNext()"><v-icon>mdi-chevron-right</v-icon></div>
+      <div class="slide-next" @click="slideNext()">
+        <v-icon>mdi-chevron-right</v-icon>
+      </div>
     </v-sheet>
-      <div>
-    <v-divider></v-divider>
-  </div>
+    <div>
+      <v-divider></v-divider>
+
+        <div id="noticeListPanel" :class='wapperClass' @click="clickToExpand" />
+          <div v-show="isExpaned" class="notice-list-panel">
+          <div class="notice-list">
+            <p>aaaaa</p>
+            <p>bbbbbb</p>
+            <p>cccccc</p>
+            <p>cccccc</p>
+            <p>cccccc</p>
+            <p>cccccc</p>
+            <p>cccccc</p>
+            <p>cccccc</p>
+            <p>cccccc</p>
+          </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -44,6 +69,7 @@ export default {
   name: "Calendar",
   data() {
     return {
+      isExpaned: false,
       processing: false,
       today: new Date().toISOString().substr(0, 10),
       picker1: new Date(new Date().setMonth(new Date().getMonth() - 12))
@@ -64,67 +90,74 @@ export default {
       picker6: new Date(new Date().setMonth(new Date().getMonth() - 7))
         .toISOString()
         .substr(0, 7),
-        picker7: new Date(new Date().setMonth(new Date().getMonth() - 6))
+      picker7: new Date(new Date().setMonth(new Date().getMonth() - 6))
         .toISOString()
         .substr(0, 7),
-        picker8: new Date(new Date().setMonth(new Date().getMonth() - 5))
+      picker8: new Date(new Date().setMonth(new Date().getMonth() - 5))
         .toISOString()
         .substr(0, 7),
-        picker9: new Date(new Date().setMonth(new Date().getMonth() - 4))
+      picker9: new Date(new Date().setMonth(new Date().getMonth() - 4))
         .toISOString()
         .substr(0, 7),
-        picker10: new Date(new Date().setMonth(new Date().getMonth() - 3))
+      picker10: new Date(new Date().setMonth(new Date().getMonth() - 3))
         .toISOString()
         .substr(0, 7),
-        picker11: new Date(new Date().setMonth(new Date().getMonth() - 2))
+      picker11: new Date(new Date().setMonth(new Date().getMonth() - 2))
         .toISOString()
         .substr(0, 7),
-        picker12: new Date(new Date().setMonth(new Date().getMonth() - 1))
+      picker12: new Date(new Date().setMonth(new Date().getMonth() - 1))
         .toISOString()
         .substr(0, 7),
-        picker13: new Date().toISOString().substr(0, 10),
-        picker14: new Date(new Date().setMonth(new Date().getMonth() + 1))
+      picker13: new Date().toISOString().substr(0, 10),
+      picker14: new Date(new Date().setMonth(new Date().getMonth() + 1))
         .toISOString()
         .substr(0, 7),
-        picker15: new Date(new Date().setMonth(new Date().getMonth() + 2))
+      picker15: new Date(new Date().setMonth(new Date().getMonth() + 2))
         .toISOString()
         .substr(0, 7),
-        picker16: new Date(new Date().setMonth(new Date().getMonth() + 3))
+      picker16: new Date(new Date().setMonth(new Date().getMonth() + 3))
         .toISOString()
         .substr(0, 7),
-        picker17: new Date(new Date().setMonth(new Date().getMonth() + 4))
+      picker17: new Date(new Date().setMonth(new Date().getMonth() + 4))
         .toISOString()
         .substr(0, 7),
-        picker18: new Date(new Date().setMonth(new Date().getMonth() + 5))
+      picker18: new Date(new Date().setMonth(new Date().getMonth() + 5))
         .toISOString()
         .substr(0, 7),
-        picker19: new Date(new Date().setMonth(new Date().getMonth() + 6))
+      picker19: new Date(new Date().setMonth(new Date().getMonth() + 6))
         .toISOString()
         .substr(0, 7),
-        picker20: new Date(new Date().setMonth(new Date().getMonth() + 7))
+      picker20: new Date(new Date().setMonth(new Date().getMonth() + 7))
         .toISOString()
         .substr(0, 7),
-        picker21: new Date(new Date().setMonth(new Date().getMonth() + 8))
+      picker21: new Date(new Date().setMonth(new Date().getMonth() + 8))
         .toISOString()
         .substr(0, 7),
-        picker22: new Date(new Date().setMonth(new Date().getMonth() + 9))
+      picker22: new Date(new Date().setMonth(new Date().getMonth() + 9))
         .toISOString()
         .substr(0, 7),
-        picker23: new Date(new Date().setMonth(new Date().getMonth() + 10))
+      picker23: new Date(new Date().setMonth(new Date().getMonth() + 10))
         .toISOString()
         .substr(0, 7),
-        picker24: new Date(new Date().setMonth(new Date().getMonth() + 11))
+      picker24: new Date(new Date().setMonth(new Date().getMonth() + 11))
         .toISOString()
         .substr(0, 7),
-        picker25: new Date(new Date().setMonth(new Date().getMonth() + 12))
+      picker25: new Date(new Date().setMonth(new Date().getMonth() + 12))
         .toISOString()
         .substr(0, 7),
     };
   },
+  computed: {
+    wapperClass() {
+      return {
+        expanded: this.isExpaned
+      }
+    }
+  },
   methods: {
     getTitleMonthFormat(date) {
       if (date === "") return date;
-      let m = date.substr(5, 2).replace(/^0+/, '');
+      let m = date.substr(5, 2).replace(/^0+/, "");
       return m;
     },
     getTitleYearFormat(date) {
@@ -139,83 +172,93 @@ export default {
       return;
     },
     goToCurrentMonth() {
-      document.getElementById('slide').scrollLeft = 439 * 12;
+      document.getElementById("slide").scrollLeft = 439 * 12;
     },
     slidePrev() {
       if (this.processing === true) {
         return;
       }
-        this.processing = true
+      this.processing = true;
+      document.getElementById("slide").classList.add("smooth");
+      document.getElementById("slide").scrollLeft -= 439;
       // simulating the async request
       setTimeout(() => {
-             document.getElementById('slide').classList.add("smooth");
-      document.getElementById('slide').scrollLeft -= 439;
-
-        // on success or failure
-        // reset the state
         this.processing = false;
-      }, 300);
+      }, 400);
     },
     slideNext() {
-      document.getElementById('slide').classList.add("smooth");
-      document.getElementById('slide').scrollLeft += 439
+      if (this.processing === true) {
+        return;
+      }
+      this.processing = true;
+      document.getElementById("slide").classList.add("smooth");
+      document.getElementById("slide").scrollLeft += 439;
+      setTimeout(() => {
+        this.processing = false;
+      }, 400);
     },
-    sideScroll(element,direction,speed,distance,step) {
-    var scrollAmount = 0;
-    var slideTimer = setInterval(function() {
-        if(direction == 'left'){
-            element.scrollLeft -= step;
+    sideScroll(element, direction, speed, distance, step) {
+      var scrollAmount = 0;
+      var slideTimer = setInterval(function () {
+        if (direction == "left") {
+          element.scrollLeft -= step;
         } else {
-            element.scrollLeft += step;
+          element.scrollLeft += step;
         }
         scrollAmount += step;
-        if(scrollAmount >= distance){
-            window.clearInterval(slideTimer);
+        if (scrollAmount >= distance) {
+          window.clearInterval(slideTimer);
         }
-    }, speed);
-}
-  },
-      mounted() {
-      this.goToCurrentMonth()
+      }, speed);
     },
+    clickToExpand() {
+      this.isExpaned = !this.isExpaned;
+    },
+  },
+  mounted() {
+    this.goToCurrentMonth();
+  },
 };
 </script>
 
 <style scoped>
+.full-screen {
+  height: 1200px;
+}
 /* >>> div.main_container {
   width: 684px !important;
 } */
 .slide-next,
 .slide-prev {
   align-items: center;
-    display: flex;
-    flex: 0 1 52px;
-    justify-content: center;
-    min-width: 52px;
-    width: 55px;
-    height: 55px;
-    border-radius: 50%;
-    background-color: #3d3d3d;
-    cursor: pointer;
+  display: flex;
+  flex: 0 1 52px;
+  justify-content: center;
+  min-width: 52px;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  background-color: #3d3d3d;
+  cursor: pointer;
 }
 .date-panel:hover {
-background-color: aqua;
+  background-color: aqua;
 }
 .date-panel::before {
-background-color: #000000;
+  background-color: #000000;
 }
 .date-panel-main {
-background-color: #000000;
+  background-color: #000000;
 }
 .date-panel {
   border-radius: 50px;
   text-align: center;
 }
 .slide-container {
-    width: 100%;
-    display: flex;
-    overflow-x: scroll;
-    /* scroll-behavior: smooth; */
+  width: 100%;
+  display: flex;
+  overflow-x: scroll;
+  /* scroll-behavior: smooth; */
 }
 .smooth {
   scroll-behavior: smooth;
@@ -286,7 +329,7 @@ background-color: #000000;
   position: absolute;
   top: 0;
   left: 0;
-  background-color: #1E1E1E;
+  background-color: #1e1e1e;
   margin-left: 12px;
 }
 >>> .v-picker__title,
@@ -305,11 +348,11 @@ background-color: #000000;
   height: 438px;
 }
 .v-picker {
-  font-size: 2.0em;
+  font-size: 2em;
 }
 .v-divider {
-    border-color: #FFFFFF !important;
-    margin: 25px 25px 0 25px;
+  border-color: #ffffff !important;
+  margin: 25px 25px 0 25px;
 }
 >>> .v-date-picker-table th,
 >>> .v-date-picker-table .v-btn {
@@ -331,5 +374,39 @@ background-color: #000000;
 }
 >>> .v-sheet {
   background-color: black;
+}
+.notice-list-panel {
+  display: block;
+  position: absolute;
+  top: 689px;
+  width: 785px;
+  height: 300px;
+  left: 239px;
+  overflow-y: scroll;
+  background-color: #3d3d3d;
+}
+.notice-list-expand-panel {
+  /* display: block;
+  position: absolute; */
+  /* top: 689px; */
+  width: 825px;
+  height: 40px;
+  /* left: 199px; */
+  background-color: red;
+}
+#noticeListPanel.expanded {
+  left: 199px;
+  width: 40px;
+  height: 300px;
+  background-color: aqua;
+}
+#noticeListPanel {
+  /* position: fixed; */
+  position: absolute;
+  display: inline-block;
+  left: 199px;
+  width: 825px;
+  height: 40px;
+  /* transition: left 550ms ease-in-out; */
 }
 </style>

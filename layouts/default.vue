@@ -79,12 +79,12 @@
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
-    <v-footer
+    <!-- <v-footer
       :absolute="!fixed"
       app
     >
       <span>&copy; {{ new Date().getFullYear() }}</span>
-    </v-footer>
+    </v-footer> -->
   </v-app>
 </template>
 
@@ -104,8 +104,38 @@ export default {
         },
         {
           icon: 'mdi-apps',
+          title: 'expand',
+          to: '/expand'
+        },
+         {
+          icon: 'mdi-apps',
+          title: 'expand2',
+          to: '/expand2'
+        },
+        {
+          icon: 'mdi-apps',
+          title: 'MultiCanvas',
+          to: '/multiCanvas'
+        },
+        {
+          icon: 'mdi-apps',
+          title: 'MultiCanvas2',
+          to: '/multiCanvas2'
+        },
+        {
+          icon: 'mdi-apps',
           title: 'CalendarTest',
           to: '/calendarTest'
+        },
+        {
+          icon: 'mdi-apps',
+          title: 'CalendarTest2',
+          to: '/calendarTest2'
+        },
+        {
+          icon: 'mdi-apps',
+          title: 'CalendarTest3',
+          to: '/calendarTest3'
         },
         {
           icon: 'mdi-apps',
@@ -196,6 +226,11 @@ export default {
           icon: 'mdi-chart-bubble',
           title: 'CardEvent',
           to: '/cardEvent'
+        },
+         {
+          icon: 'mdi-chart-bubble',
+          title: 'multiLottie',
+          to: '/multiLottie'
         },
         {
           icon: 'mdi-chart-bubble',
