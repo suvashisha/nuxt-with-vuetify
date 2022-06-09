@@ -408,5 +408,6 @@ export default {
   width: 825px;
   height: 40px;
   /* transition: left 550ms ease-in-out; */
+  transition: all 0.5s ease-out;
 }
 </style>
