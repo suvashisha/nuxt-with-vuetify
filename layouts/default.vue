@@ -104,6 +104,21 @@ export default {
         },
         {
           icon: 'mdi-apps',
+          title: 'Sidebar',
+          to: '/sidebar'
+        },
+        {
+          icon: 'mdi-apps',
+          title: 'Sidebar2',
+          to: '/sidebar2'
+        },
+        {
+          icon: 'mdi-apps',
+          title: 'Sidebar3',
+          to: '/sidebar3'
+        },
+        {
+          icon: 'mdi-apps',
           title: 'expand',
           to: '/expand'
         },
