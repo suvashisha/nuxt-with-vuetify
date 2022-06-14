@@ -104,6 +104,16 @@ export default {
         },
         {
           icon: 'mdi-apps',
+          title: 'Navbar',
+          to: '/navbar'
+        },
+        {
+          icon: 'mdi-apps',
+          title: 'Scroll',
+          to: '/scroll'
+        },
+        {
+          icon: 'mdi-apps',
           title: 'Sidebar',
           to: '/sidebar'
         },
