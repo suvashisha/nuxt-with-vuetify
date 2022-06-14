@@ -33,9 +33,14 @@ export default {
       console.log(currPos);
 
       //calculating the next position of the object
-        currPos = parseInt(currPos) - delta;
-        //moving the position of the object
-        document.getElementById("scroll").style.top = currPos + "px";
+      currPos = parseInt(currPos) - delta;
+      if (currPos < 10) {
+        currPos = 10;
+      } else if (currPos > 400) {
+        currPos = 400;
+      }
+      //moving the position of the object
+      document.getElementById("scroll").style.top = currPos + "px";
     },
     scrollX(event) {
       let scale = 1;
