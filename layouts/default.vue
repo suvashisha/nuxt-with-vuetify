@@ -114,6 +114,11 @@ export default {
         },
         {
           icon: 'mdi-apps',
+          title: 'Scroll2',
+          to: '/scroll2'
+        },
+        {
+          icon: 'mdi-apps',
           title: 'Sidebar',
           to: '/sidebar'
         },
