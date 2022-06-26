@@ -109,8 +109,18 @@ export default {
         },
         {
           icon: 'mdi-apps',
+          title: 'scrollto',
+          to: '/scrollto'
+        },
+        {
+          icon: 'mdi-apps',
           title: 'slick',
           to: '/slick'
+        },
+        {
+          icon: 'mdi-apps',
+          title: 'slick2',
+          to: '/slick2'
         },
         {
           icon: 'mdi-apps',

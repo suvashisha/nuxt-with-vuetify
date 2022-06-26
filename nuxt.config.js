@@ -3,6 +3,29 @@ import colors from 'vuetify/es5/util/colors'
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
+    script: [
+      {
+        src: '~/assets/js/slick.min.js',
+      },
+      {
+        src: 'js/slick.min.js',
+      },
+      {
+        src: 'assets/js/slick.min.js',
+      },
+      {
+        src: '~assets/js/slick.min.js',
+      },
+      {
+        src: '@assets/js/slick.min.js',
+      },
+      {
+        src: '@/assets/js/slick.min.js',
+      },
+      {
+        src: '@assets/js/slick.min.js',
+      },
+    ],
     titleTemplate: '%s | nuxt-with-vuetify',
     title: 'nuxt-with-vuetify',
     htmlAttrs: {
@@ -26,8 +49,12 @@ export default {
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
     {
+      src: '~/plugins/vue-scrollto',
+      src: '~/plugins/vue-dragscroll',
+      src: '~/plugins/slick.min.js',
       src: '@/plugins/plugin',
-      mode: 'client'
+      mode: 'client',
+      target: 'static'
     }
   ],
 
