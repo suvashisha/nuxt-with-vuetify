@@ -104,6 +104,16 @@ export default {
         },
         {
           icon: 'mdi-apps',
+          title: 'photo',
+          to: '/photo'
+        },
+         {
+          icon: 'mdi-apps',
+          title: 'expandDiv',
+          to: '/expandDiv'
+        },
+        {
+          icon: 'mdi-apps',
           title: 'expandiv',
           to: '/expandiv'
         },
