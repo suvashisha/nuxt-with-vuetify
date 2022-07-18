@@ -104,6 +104,11 @@ export default {
         },
         {
           icon: 'mdi-apps',
+          title: 'ColorStyle',
+          to: '/colorStyle'
+        },
+        {
+          icon: 'mdi-apps',
           title: 'photo',
           to: '/photo'
         },
@@ -129,8 +134,8 @@ export default {
         },
         {
           icon: 'mdi-apps',
-          title: 'slick2',
-          to: '/slick2'
+          title: 'dragAndScroll',
+          to: '/dragAndScroll'
         },
         {
           icon: 'mdi-apps',
