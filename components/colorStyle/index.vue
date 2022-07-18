@@ -8,8 +8,20 @@
         :key="'colorTile_' + index"
         :color-label="colorTile.label"
         :btn-bg-color="colorTile.bgColor"
-        :is-selected="isSelected===index"
+        :is-selected="isSelected === index"
+        :is-group="false"
         @action-color-select="actionColorSelect(index)"
+      />
+    </div>
+    <div class="color-style-group-btn-area">
+      <ColorGroupTile
+        v-for="(colorGroupTile, index) in colorGroupTiles"
+        :key="'colorGroupTile_' + index"
+        :color-tiles="colorGroupTile.colorTiles"
+        :btn-bg-color="colorTiles.bgColor"
+        :is-group="true"
+        :is-group-selected="isGroupSelected === index"
+        @action-color-group-select="actionColorGroupSelect(index)"
       />
     </div>
   </div>
@@ -20,15 +32,46 @@ export default {
   data() {
     return {
       isSelected: false,
+      isGroupSelected: false,
       colorTiles: [
-        { label: "wt", bgColor: "#a151d6"},
-        { label: "vs" , bgColor: "#FF1493" },
-        { label: "fg" , bgColor: "#696969" },
-        { label: "gh" , bgColor: "#DF9DC3" },
-        { label: "gh" , bgColor: "#91A4B6" },
-        { label: "hj" , bgColor: "#ffbb33" },
-        { label: "jh" , bgColor: "#1188ff" },
-        { label: "hj" , bgColor: "#3399cc" }
+        { label: "wt", bgColor: "#9F98CF" },
+        { label: "fg", bgColor: "#696969" },
+        { label: "vs", bgColor: "#FF1493" },
+        { label: "gh", bgColor: "#DF9DC3" },
+        { label: "gh", bgColor: "#91A4B6" },
+        { label: "hj", bgColor: "#ffbb33" },
+        { label: "jh", bgColor: "#1188ff" },
+        { label: "hj", bgColor: "#3399cc" },
+      ],
+      colorGroupTiles: [
+        {
+          colorTiles: [
+            { bgColor: "#9f98cf" },
+            { bgColor: "#a8a2d3" },
+            { bgColor: "#b2acd8" },
+            { bgColor: "#bbb6dd" },
+            { bgColor: "#c5c1e2" },
+            { bgColor: "#cfcbe7" },
+            { bgColor: "#d8d5eb" },
+            { bgColor: "#e2e0f0" },
+            { bgColor: "#ebeaf5" },
+            { bgColor: "#f5f4fa" },
+          ],
+        },
+        {
+          colorTiles: [
+            { bgColor: "#696969" },
+            { bgColor: "#75a375" },
+            { bgColor: "#84ad84" },
+            { bgColor: "#84ad84" },
+            { bgColor: "#93b793" },
+            { bgColor: "#a3c1a3" },
+            { bgColor: "#b2ccb2" },
+            { bgColor: "#c1d6c1" },
+            { bgColor: "#d1e0d1" },
+            { bgColor: "#e0eae0" },
+          ],
+        },
       ],
     };
   },
@@ -37,8 +80,13 @@ export default {
       console.log("actionColorSelect");
       this.isSelected = targetIndex;
       console.log(this.isSelected);
-    }
-  }
+    },
+    actionColorGroupSelect(targetIndex) {
+      console.log("actionColorGroupSelect");
+      this.isGroupSelected = targetIndex;
+      console.log(this.isGroupSelected);
+    },
+  },
 };
 </script>
 
@@ -77,10 +125,16 @@ export default {
   bottom: 200px;
   width: 100%;
   height: 50px;
+  left: 70px;
   /* background-color: #05f2f6; */
 }
-
-.red {
-  background-color: red;
+/* color-style-group-btn-area */
+.color-style-group-btn-area {
+  display: inline-block;
+  position: absolute;
+  bottom: 140px;
+  width: 100%;
+  height: 50px;
+  /* background-color: #05f2f6; */
 }
 </style>
