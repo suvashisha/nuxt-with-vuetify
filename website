@@ -1,3 +1,5 @@
+const { preventExtensions } = require("core-js/core/object");
+
 https://www.codeply.com/p/MR3Sajw9kt
 https://codepen.io/wernerm/pen/eLwrxY
 
@@ -50,3 +52,7 @@ https://zenn.dev/numacci/articles/202101_java_restapi-postgres
 
 drag scroll
 https://codepen.io/suvashisha/pen/XWEYvww
+
+
+Extensions
+Thunder Client
