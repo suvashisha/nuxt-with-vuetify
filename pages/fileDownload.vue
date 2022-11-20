@@ -1,8 +1,6 @@
 <template>
   <div class="full-screen">
-    <div class="file-download-btn-area" @click="clickToDownloadFile">
-      Download
-    </div>
+    <div class="file-download-btn-area" @click="downloadFile">Download</div>
   </div>
 </template>
 
@@ -13,20 +11,41 @@ export default {
       textData: "aaaaaa",
     };
   },
-  mounted() {},
+  mounted() {
+    this.downloadFile();
+  },
   methods: {
-    clickToDownloadFile() {
+    downloadFile() {
       console.log("Click Download Button");
-      let textblob = new Blob([this.textData], { type: "text/plain" }); // where textData refers to the retrieved text value of a form input
-      let dwnlnk = document.createElement("a");
-      dwnlnk.download = "output.txt";
-      if (window.webkitURL != null) {
-        dwnlnk.href = window.webkitURL.createObjectURL(textblob);
-      } else {
-        dwnlnk.href = window.URL.createObjectURL(textblob);
-      }
-      dwnlnk.click();
+      //this.download();
+      let url = window.URL.createObjectURL(
+        new Blob([this.textData], { type: "text/plain" })
+      );
+      let link = document.createElement("a");
+      link.href = url;
+      link.setAttribute("download", "output.txt"); //or any other extension
+      document.body.appendChild(link);
+      link.click();
     },
+  },
+  download() {
+    // let textblob = new Blob([this.textData], { type: "text/plain" }); // where textData refers to the retrieved text value of a form input
+    // let dwnlnk = document.createElement("a");
+    // dwnlnk.download = "output.txt";
+    // if (window.webkitURL != null) {
+    //   dwnlnk.href = window.webkitURL.createObjectURL(textblob);
+    // } else {
+    //   dwnlnk.href = window.URL.createObjectURL(textblob);
+    // }
+    // dwnlnk.click();
+    let url = window.URL.createObjectURL(
+      new Blob([this.textData], { type: "text/plain" })
+    );
+    let link = document.createElement("a");
+    link.href = url;
+    link.setAttribute("download", "output.txt"); //or any other extension
+    document.body.appendChild(link);
+    link.click();
   },
 };
 </script>
