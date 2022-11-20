@@ -5,6 +5,7 @@
 </template>
 
 <script>
+import { saveAs } from "file-saver";
 export default {
   data() {
     return {
@@ -18,14 +19,26 @@ export default {
     downloadFile() {
       console.log("Click Download Button");
       //this.download();
-      let url = window.URL.createObjectURL(
-        new Blob([this.textData], { type: "text/plain" })
-      );
-      let link = document.createElement("a");
-      link.href = url;
-      link.setAttribute("download", "output.txt"); //or any other extension
-      document.body.appendChild(link);
-      link.click();
+      // let url = window.URL.createObjectURL(
+      //   new Blob([this.textData], { type: "text/plain" })
+      // );
+      // let link = document.createElement("a");
+      // link.href = url;
+      // link.setAttribute("download", "output.txt"); //or any other extension
+      // document.body.appendChild(link);
+      // link.click();
+      // ********************************
+      var FileSaver = require("file-saver");
+      var blob = new Blob(["Hello, world!"], {
+        type: "text/plain;charset=utf-8",
+      });
+      FileSaver.saveAs(blob, "hello world.txt");
+      // ********************************
+
+      // var file = new File(["Hello, world!"], "hello world.txt", {
+      //   type: "text/plain;charset=utf-8",
+      // });
+      // FileSaver.saveAs(file);
     },
   },
   download() {
