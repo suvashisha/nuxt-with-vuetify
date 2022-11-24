@@ -62,3 +62,11 @@ https://stackoverflow.com/questions/48208468/chrome-bug-with-pointer-events-and-
 
 fileServer
 https://www.npmjs.com/package/file-saver
+
+simple keyboard
+tabCharOnTab: false,
+      display: {
+        "{shift}": "A/a",
+        "{enter}": "submit",
+      },
+https://hodgef.com/simple-keyboard/documentation/options/tabcharontab/
