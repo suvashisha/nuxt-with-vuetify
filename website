@@ -74,3 +74,16 @@ https://hodgef.com/simple-keyboard/documentation/options/tabcharontab/
 https://blog.cloud-acct.com/posts/spa-signup-form/
 
 https://codesandbox.io/embed/github/simple-keyboard/vue-simple-keyboard-multiple-inputs/tree/master/?fontsize=14&module=%2Fsrc%2FApp.vue&codemirror=1
+
+
+チェックインキャンセルダイアログの表示タイミングについて
+
+カラテ一覧のチェックインボタンを押下した後のダイアログボックスについて
+共通カラテAPIの結果でcanceldatetimeの値がある場合に
+チェックインのボタンを押下した後にダイレクトにキャンセルダイアログを表示するか
+チェックイン確認のダイアログでOKボタンを
+押下した後にキャンセルダイアログを表示するかを
+設計書で「イベント一覧」には記載がないのでどちらか決定の上追加してほしい。
+因みに「メッセージ一覧」にはチェックイン確認のダイアログでOKボタンを押下後の
+キャンセルしますかのメッセージの表示が
+記載されている。
