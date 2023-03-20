@@ -4,9 +4,9 @@
     <client-only>
       <swiper
         activeSlideKey="5"
-        ref="carousel"
+        ref="swiperRef"
         class="swiper"
-        :options="swiperOptions()"
+        :options="swiperOptions"
         @ready="onSwiperRedied"
         @clickSlide="onSwiperClickSlide"
         @slideChangeTransitionStart="onSwiperSlideChangeTransitionStart"
@@ -27,6 +27,7 @@
 
 <script>
 import { Swiper, swiperSlide } from "vue-awesome-swiper";
+
 components: {
   Swiper, swiperSlide;
 }
@@ -35,23 +36,32 @@ export default {
   data() {
     return {
       slider: null,
-      initialSlide: 0,
+      swiperOptions: {
+        initialSlide: 0,
+        spaceBetween: 30,
+        pagination: {
+          el: ".swiper-pagination",
+          dynamicBullets: true,
+        },
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+      },
     };
   },
   mounted() {
-    this.init();
+    // this.init();
   },
   computed: {
-    slider() {
-      debugger;
-      // return this.$refs.carousel.$swiper;
-      return this.slider;
-    },
+    // swiper() {
+    //   console.log("********swiper ref", this.$refs.swiperRef.$swiper);
+    //   return this.$refs.swiperRef.$swiper;
+    // },
   },
   methods: {
     init() {
       debugger;
-      this.initialSlide = 2;
       // this.slider = new Swiper(this.$refs.carousel, {
       //   swiperOptions: {
       //     initialSlide: 5,
@@ -68,27 +78,28 @@ export default {
       // });
       //this.$refs.carousel.swiper.slideTo(2);
     },
-    swiperOptions() {
-      debugger;
-      const swiper = {
-        swiperOptions: {
-          initialSlide: this.initialSlide,
-          spaceBetween: 30,
-          pagination: {
-            el: ".swiper-pagination",
-            dynamicBullets: true,
-          },
-          navigation: {
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
-          },
-        },
-      };
-      debugger;
-      return swiper.swiperOptions;
-    },
+    // swiperOptions() {
+    //   debugger;
+    //   const swiper = {
+    //     swiperOptions: {
+    //       initialSlide: this.initialSlide,
+    //       spaceBetween: 30,
+    //       pagination: {
+    //         el: ".swiper-pagination",
+    //         dynamicBullets: true,
+    //       },
+    //       navigation: {
+    //         nextEl: ".swiper-button-next",
+    //         prevEl: ".swiper-button-prev",
+    //       },
+    //     },
+    //   };
+    //   debugger;
+    //   return swiper.swiperOptions;
+    // },
     onSwiperRedied(swiper) {
       console.log("Swiper redied!", swiper);
+      swiper.slideTo(4);
     },
     onSwiperSlideChangeTransitionStart() {
       console.log("SwiperSlideChangeTransitionStart!");
